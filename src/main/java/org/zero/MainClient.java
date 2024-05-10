@@ -14,11 +14,13 @@ public class MainClient {
         try {
             socketModule = new SocketModule(4004).connect();
 
-            System.out.println("Вы что-то хотели сказать? Введите это здесь:");
-            String word = reader.readLine();
-            socketModule.sendMessageToServer(word);
-            String serverWord = socketModule.getMessageFromServer();
-            System.out.println(serverWord);
+            while (true) {
+                System.out.println("Введите это здесь:");
+                String word = reader.readLine();
+                socketModule.sendMessageToServer(word);
+                String serverWord = socketModule.getMessageFromServer();
+                System.out.println(serverWord);
+            }
         }finally {
             System.out.println("Клиент был закрыт...");
             socketModule.close();
